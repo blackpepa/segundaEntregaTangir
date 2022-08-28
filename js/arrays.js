@@ -59,9 +59,10 @@ class suscriptor{
     constructor (new_suscriptor){
         this.nombre = new_suscriptor.nombre;
         this.email = new_suscriptor.mail;
+        this.signo = new_suscriptor.signo;
     } 
    
 }
 
-let suscriptorUno = ["Juan", "juan@juan.com"];
-let suscriptorDos = ["María", "pechugaslarou@hotmail.com"];
+let suscriptorUno = ["Juan", "juan@juan.com", "Libra"];
+let suscriptorDos = ["María", "pechugaslarou@hotmail.com", "Aries"];

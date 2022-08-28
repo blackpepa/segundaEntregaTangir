@@ -47,6 +47,7 @@ let seleccionar = document.getElementById("seleccionar");
   let mensajeExito =document.getElementById("exito");
   let nombreForm = "";
   let mailForm ="";
+  let signoForm ="";
 
   btnSuscripcion.addEventListener("click",()=>{
 
@@ -58,7 +59,7 @@ let seleccionar = document.getElementById("seleccionar");
 
     }else{
 
-        mensajeAlerta.textContent = "Completá los dos campos"
+        mensajeAlerta.textContent = "Completá todos los campos"
 
     }
 
@@ -75,7 +76,7 @@ let seleccionar = document.getElementById("seleccionar");
   function validar_formulario(){
     nombreForm = document.getElementById("exampleFormControlInput2").value
     mailForm = document.getElementById("exampleFormControlInput1").value
-
+    signoForm =document.getElementById("exampleFormControlInput3").value
     if (!nombreForm){
 
         return false;
@@ -87,7 +88,11 @@ let seleccionar = document.getElementById("seleccionar");
 
     }
 
+    if (!signoForm){
 
+      return false;
+
+  }
     return true;
 
 }
@@ -97,14 +102,34 @@ suscriptores.push(suscriptorDos);
 
 function guardar_usuario(){
 
-    suscriptores.push([nombreForm, mailForm]);
+    suscriptores.push([nombreForm, mailForm, signoForm]);
     localStorage.setItem("listaUsuarios", JSON.stringify(suscriptores));
 
 }
+let btnSuscriptores = document.getElementById("btnConsul")
+let lista = document.getElementById("listadoSuscriptores");
+let item =""
+
+btnSuscriptores.addEventListener("click",()=>{
+  mostrar_lista(suscriptores);
+})
 
 function consultar_usuarios(){
-  localStorage.getItem("listaUsuario", JSON.parse(suscriptores));
+  let ul = document.createElement("ul")
+  lista.appendChild (ul);
+  let li = document.createElement("li");
+  ul.appendChild(li)
+  li.innerHTML = item; 
 
 }
+
+function mostrar_lista(){
+
+      item = localStorage.getItem ("listaUsuarios", (suscriptores).toString);
+
+      consultar_usuarios(item);
+
+  }
+
 
 console.log(localStorage);
