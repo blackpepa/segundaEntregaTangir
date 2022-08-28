@@ -70,6 +70,7 @@ let seleccionar = document.getElementById("seleccionar");
 
     document.getElementById("exampleFormControlInput2").value = "";
     document.getElementById("exampleFormControlInput1").value = "";
+    document.getElementById("exampleFormControlInput3").value = "";
 }
 
 
