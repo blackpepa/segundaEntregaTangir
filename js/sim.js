@@ -98,39 +98,40 @@ let seleccionar = document.getElementById("seleccionar");
 
 }
 let suscriptores= Array();
-suscriptores.push(suscriptorUno);
-suscriptores.push(suscriptorDos);
-
-function guardar_usuario(){
-
-    suscriptores.push([nombreForm, mailForm, signoForm]);
-    localStorage.setItem("listaUsuarios", JSON.stringify(suscriptores));
-
-}
-let btnSuscriptores = document.getElementById("btnConsul")
-let lista = document.getElementById("listadoSuscriptores");
-let item =""
-
-btnSuscriptores.addEventListener("click",()=>{
-  mostrar_lista(suscriptores);
-})
-
-function consultar_usuarios(){
-  let ul = document.createElement("ul")
-  lista.appendChild (ul);
-  let li = document.createElement("li");
-  ul.appendChild(li)
-  li.innerHTML = item; 
-
-}
-
-function mostrar_lista(){
-
-      item = localStorage.getItem ("listaUsuarios", (suscriptores).toString);
-
-      consultar_usuarios(item);
-
+  suscriptores.push(suscriptorUno);
+  suscriptores.push(suscriptorDos);
+  
+  function guardar_usuario(){
+  
+      suscriptores.push([nombreForm, mailForm, signoForm]);
+      localStorage.setItem("listaUsuarios", JSON.stringify(suscriptores));
+  
   }
-
-
-console.log(localStorage);
+  let btnSuscriptores = document.getElementById("btnConsul")
+  let lista = document.getElementById("listadoSuscriptores");
+  let item =""
+  
+  btnSuscriptores.addEventListener("click",()=>{
+    mostrar_lista(suscriptores);
+  })
+  
+  function consultar_usuarios(){
+    let ul = document.createElement("ul")
+    lista.appendChild (ul);
+    suscriptores.forEach(item =>{
+      let li = document.createElement("li");
+      ul.appendChild(li)
+      li.innerHTML = item; 
+    })
+  }
+  
+  function mostrar_lista(){
+  
+        item = localStorage.getItem ("listaUsuarios", suscriptores);
+  
+        consultar_usuarios(item);
+  
+    }
+  
+  
+  console.log(localStorage);
