@@ -64,5 +64,5 @@ class suscriptor{
    
 }
 
-let suscriptorUno = ["Juan", "juan@juan.com", "Libra"];
-let suscriptorDos = ["María", "pechugaslarou@hotmail.com", "Aries"];
+let suscriptorUno = new suscriptor({nombre:"Juan", mail:"juan@juan.com", signo:"Libra"});
+let suscriptorDos = new suscriptor({nombre:"María", mail:"pechugaslarou@hotmail.com", signo:"Aries"});

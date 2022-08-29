@@ -97,39 +97,39 @@ let seleccionar = document.getElementById("seleccionar");
     return true;
 
 }
-let suscriptores= Array();
+let suscriptores= []
+
   suscriptores.push(suscriptorUno);
   suscriptores.push(suscriptorDos);
   
   function guardar_usuario(){
   
-      suscriptores.push([nombreForm, mailForm, signoForm]);
+      suscriptores.push({nombre: nombreForm, mail: mailForm, signo:signoForm});
       localStorage.setItem("listaUsuarios", JSON.stringify(suscriptores));
   
   }
   let btnSuscriptores = document.getElementById("btnConsul")
   let lista = document.getElementById("listadoSuscriptores");
-  let item =""
   
   btnSuscriptores.addEventListener("click",()=>{
     mostrar_lista(suscriptores);
   })
   
-  function consultar_usuarios(){
+  function consultar_usuarios(arrayUsuarios){
     let ul = document.createElement("ul")
     lista.appendChild (ul);
-    suscriptores.forEach(item =>{
+    arrayUsuarios.forEach(suscriptores =>{
       let li = document.createElement("li");
-      ul.appendChild(li)
-      li.innerHTML = item; 
+      li.innerHTML = `<p>${suscriptores.nombre} - ${suscriptores.signo}</p>`
+      ul.appendChild(li);
     })
   }
   
   function mostrar_lista(){
   
-        item = localStorage.getItem ("listaUsuarios", suscriptores);
+        let arrayUsuarios= JSON.parse(localStorage.getItem("listaUsuarios"));
   
-        consultar_usuarios(item);
+        consultar_usuarios(arrayUsuarios);
   
     }
   
